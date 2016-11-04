@@ -1,3 +1,15 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+#custom_user:
+#    resource: "@CustomUserBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+#
+#web:
+#    resource: "@AppBundle/Resources/config/routing_back.yml"
+#    prefix:   /back
+users:
+    type: rest
+        prefix: /back
+        resource: "CustomUserBundle\Controller\UsersController"
+
+
+

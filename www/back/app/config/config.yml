@@ -78,4 +78,4 @@ fos_rest:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Custom\UserBundle\Entity\User
+    user_class: Custom  \UserBundle\Entity\User

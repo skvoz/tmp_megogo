@@ -17,7 +17,16 @@
     <script src="systemjs.config.js"></script>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
+      System.config({
+          map: {
+              css: 'node_modules/systemjs-plugin-css/css.js'
+          },
+          meta: {
+              '*.css': { loader: 'css' }
+          }
+      });
     </script>
+    <script src="https://buttons.github.io/buttons.js"></script>
   </head>
 
   <body>

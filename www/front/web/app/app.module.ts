@@ -18,7 +18,15 @@ import {InMemoryDataService}  from './in-memory-data.service';
 
 import './rxjs-extensions';
 import {UsersComponent} from "./user/users.component";
+import {UserComponent} from "./user/user.component";
+import {TableComponent} from "./table/table.component";
 import {Angular2DataTableModule} from "angular2-data-table";
+import {UserService} from "./user/user.service";
+
+import './assets/style/icons.css';
+import './assets/style/users-datatable.component.css';
+import './assets/style/users-material.component.css';
+
 
 @NgModule({
     imports: [
@@ -35,12 +43,15 @@ import {Angular2DataTableModule} from "angular2-data-table";
         HeroesComponent,
         DashboardComponent,
         HeroSearchComponent,
-        UsersComponent
+        UsersComponent,
+        UserComponent,
+        TableComponent
     ],
     providers: [
-        HeroService
+        HeroService,
+        UserService
     ],
-    bootstrap: [AppComponent, UsersComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

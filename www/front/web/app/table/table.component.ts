@@ -27,8 +27,6 @@ import {User} from "../user";
 })
 export class TableComponent extends OnInit {
     users: User[];
-    selectedUser: User;
-
     rows: any[] = [];
     selected: any[] = [];
     columns: any[] = [

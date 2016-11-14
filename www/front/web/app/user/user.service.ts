@@ -7,6 +7,7 @@ import { User } from '../user';
 
 @Injectable()
 export class UserService {
+
     private headers = new Headers({'Content-Type': 'application/json'});
 
     private usersUrl = 'app/users';
@@ -20,9 +21,16 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    getUser(id: number): Promise<User> {
-        return this.getUsers()
-            .then(users => users.find(user => user.id === id));
+    getUser(id?: number): Promise<User> {
+        return  this.getUsers()
+            .then(users => {
+                let obj = users.find(user => user.id === id);
+                if (typeof obj == "undefined") {
+                    obj = new User;
+                }
+
+                return obj;
+            });
     }
 
     private handleError(error: any): Promise<any> {
@@ -38,13 +46,15 @@ export class UserService {
             .then(() => user)
             .catch(this.handleError);
     }
-    create(name: string): Promise<User> {
+
+    create(user: User): Promise<User> {
         return this.http
-            .post(this.usersUrl, JSON.stringify({name: name}), {headers: this.headers})
+            .post(this.usersUrl, JSON.stringify(user), {headers: this.headers})
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
     }
+
     delete(id: number): Promise<void> {
         const url = `${this.usersUrl}/${id}`;
         return this.http.delete(url, {headers: this.headers})

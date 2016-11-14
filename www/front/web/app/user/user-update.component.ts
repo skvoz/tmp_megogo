@@ -2,15 +2,15 @@ import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
-import { User }        from './user';
+import { User }        from '../user';
 import { UserService } from './user.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'user-detail-app',
+    selector: 'user-update-app',
     templateUrl: 'user.component.html',
 })
-export class UserComponent implements OnInit {
+export class UserUpdateComponent implements OnInit {
     user: User;
 
     constructor(
@@ -21,9 +21,12 @@ export class UserComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
-            let id = +params['id'];
-            this.userService.getUser(id)
-                .then(user => this.user = user);
+
+                let id = +params['id'];
+
+                this.userService.getUser(id)
+                    .then(user => this.user = user);
+
         });
     }
 

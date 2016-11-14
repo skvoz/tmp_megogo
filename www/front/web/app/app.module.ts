@@ -18,7 +18,8 @@ import {InMemoryDataService}  from './in-memory-data.service';
 
 import './rxjs-extensions';
 import {UsersComponent} from "./user/users.component";
-import {UserComponent} from "./user/user.component";
+import {UserUpdateComponent} from "./user/user-update.component";
+import {UserAddComponent} from "./user/user-add.component";
 import {TableComponent} from "./table/table.component";
 import {Angular2DataTableModule} from "angular2-data-table";
 import {UserService} from "./user/user.service";
@@ -44,7 +45,8 @@ import './assets/style/users-material.component.css';
         DashboardComponent,
         HeroSearchComponent,
         UsersComponent,
-        UserComponent,
+        UserUpdateComponent,
+        UserAddComponent,
         TableComponent
     ],
     providers: [

@@ -6,11 +6,14 @@ import {Component} from '@angular/core';
         'app.component.css',
     ],
     template: `
-     <h1>{{title}}</h1>
-  
-  <router-outlet></router-outlet>
-   `
+        <div class="wrapper">
+            <nav>
+                <a href="/user">add user</a>
+            </nav>
+            <auth></auth>
+            <router-outlet></router-outlet>
+        </div>
+    `
 })
 export class AppComponent {
-    title = 'Tour of Heroes';
 }

@@ -23,10 +23,13 @@ import {UserAddComponent} from "./user/user-add.component";
 import {TableComponent} from "./table/table.component";
 import {Angular2DataTableModule} from "angular2-data-table";
 import {UserService} from "./user/user.service";
+import {AuthComponent} from "./user/auth.component";
 
 import './assets/style/icons.css';
 import './assets/style/users-datatable.component.css';
 import './assets/style/users-material.component.css';
+import {UserLoginComponent} from "./user/user-login.component";
+import {UserRegisterComponent} from "./user/user-register.component";
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import './assets/style/users-material.component.css';
         UsersComponent,
         UserUpdateComponent,
         UserAddComponent,
-        TableComponent
+        TableComponent,
+        AuthComponent,
+        UserLoginComponent,
+        UserRegisterComponent,
     ],
     providers: [
         HeroService,

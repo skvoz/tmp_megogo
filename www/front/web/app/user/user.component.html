@@ -1,27 +1,29 @@
-<div *ngIf="user">
-    <h2>{{user.name}} details!</h2>
-    <div>
-        <label>company: </label>
-        <input [(ngModel)]="user.company" placeholder="name" />
+<div *ngIf="user" class="user">
+    <h3><span>{{user.id ? "Update" : "Add new "}} user</span></h3>
+    <div class="content">
+        <div>
+            <label>company: </label>
+            <input [(ngModel)]="user.company" placeholder="company"/>
+        </div>
+
+        <div>
+            <label>name: </label>
+            <input [(ngModel)]="user.name" placeholder="name"/>
+        </div>
+
+
+        <div>
+            <label>gender: </label>
+            <input [(ngModel)]="user.gender" placeholder="gender"/>
+        </div>
+
+
+        <div>
+            <label>age: </label>
+            <input [(ngModel)]="user.age" placeholder="age"/>
+        </div>
+
+        <button (click)="goBack()">Back</button>
+        <button (click)="save()">Save</button>
     </div>
-
-    <div>
-        <label>name: </label>
-        <input [(ngModel)]="user.name" placeholder="name" />
-    </div>
-
-
-    <div>
-        <label>gender: </label>
-        <input [(ngModel)]="user.gender" placeholder="name" />
-    </div>
-
-
-    <div>
-        <label>age: </label>
-        <input [(ngModel)]="user.age" placeholder="name" />
-    </div>
-
-    <button (click)="goBack()">Back</button>
-    <button (click)="save()">Save</button>
 </div>

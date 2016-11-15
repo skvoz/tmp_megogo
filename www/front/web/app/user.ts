@@ -4,4 +4,5 @@ export class User {
     company: string;
     gender: string;
     age: number;
+    actions: string;
 }

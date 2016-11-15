@@ -9,6 +9,7 @@ import { UserService } from './user.service';
     moduleId: module.id,
     selector: 'user-update-app',
     templateUrl: 'user.component.html',
+    stylesUrl: ['user.component.css'],
 })
 export class UserUpdateComponent implements OnInit {
     user: User;

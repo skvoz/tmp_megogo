@@ -1,17 +1,18 @@
 import {Component}      from '@angular/core';
-import {Router} from '@angular/router';
-import {Location}               from '@angular/common';
 
 @Component({
     moduleId: module.id,
     selector: 'user-add-app',
-    templateUrl: 'user.component.html',
+    template: `
+        <div class="user">
+            <h3><span>Login</span></h3>
+            <div class="content">
+                <login-form-reactive></login-form-reactive>
+            </div>
+        </div>
+    `,
     styleUrls: ['./user.component.css'],
 })
 export class UserLoginComponent {
 
-    constructor(
-                private router: Router,
-                private location: Location) {
-    }
 }

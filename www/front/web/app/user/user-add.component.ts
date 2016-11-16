@@ -9,26 +9,25 @@ import {UserService} from './user.service';
     moduleId: module.id,
     selector: 'user-add-app',
     templateUrl: 'user.component.html',
-    styleUrls: ['./user.component.css'],
 })
-export class UserAddComponent implements OnInit {
-    user: User;
-
-    constructor(private userService: UserService,
-                private router: Router,
-                private location: Location) {
-    }
-
-    ngOnInit(): void {
-        this.user = new User();
-    }
-
-    save(): void {
-        this.userService.create(this.user)
-            .then(() => this.router.navigate(['/users']))
-    }
-
-    goBack(): void {
-        this.location.back();
-    }
+export class UserAddComponent {
+    // user: User;
+    //
+    // constructor(private userService: UserService,
+    //             private router: Router,
+    //             private location: Location) {
+    // }
+    //
+    // ngOnInit(): void {
+    //     this.user = new User();
+    // }
+    //
+    // save(): void {
+    //     this.userService.create(this.user)
+    //         .then(() => this.router.navigate(['/users']))
+    // }
+    //
+    // goBack(): void {
+    //     this.location.back();
+    // }
 }

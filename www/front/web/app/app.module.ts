@@ -30,6 +30,9 @@ import './assets/style/users-datatable.component.css';
 import './assets/style/users-material.component.css';
 import {UserLoginComponent} from "./user/user-login.component";
 import {UserRegisterComponent} from "./user/user-register.component";
+import {LoginFormReactiveModule} from "./forms/login/login-form-reactive.module";
+import {RegisterFormReactiveModule} from "./forms/register/register-form-reactive.module";
+import {UserFormComponent} from "./forms/user/user-form.component";
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import {UserRegisterComponent} from "./user/user-register.component";
         AppRoutingModule,
         HttpModule,
         InMemoryWebApiModule.forRoot(InMemoryDataService),
-        Angular2DataTableModule
+        Angular2DataTableModule,
+        LoginFormReactiveModule,
+        RegisterFormReactiveModule,
+
     ],
     declarations: [
         AppComponent,
@@ -54,6 +60,8 @@ import {UserRegisterComponent} from "./user/user-register.component";
         AuthComponent,
         UserLoginComponent,
         UserRegisterComponent,
+        UserFormComponent,
+
     ],
     providers: [
         HeroService,

@@ -620,10 +620,14 @@ export class InMemoryDataService implements InMemoryDbService {
             {id: 19, name: 'Magma'},
             {id: 20, name: 'Tornado'}
         ];
-        
-        return {heroes, users};
+
+        let login = [
+            {
+                login: 'test',
+                password: 'test'
+            }
+        ];
+
+        return {heroes, users, login};
     }
-
-
-
 }

@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from '../user';
+// import {Login} from "../forms/login/login";
 
 @Injectable()
 export class UserService {
@@ -62,4 +63,13 @@ export class UserService {
             .then(() => null)
             .catch(this.handleError);
     }
+
+    // login(model: Login) : Promise<Login> {
+    //     console.log('login');
+    //     // return this.http
+    //     //     .post('app/login', JSON.stringify(model), {headers: this.headers})
+    //     //     .toPromise()
+    //     //     .then(()=> model)
+    //     //     .catch(this.handleError());
+    // }
 }

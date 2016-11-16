@@ -111,15 +111,15 @@ body {
     margin-bottom: 45px;
 }
 
-input[type=text] {
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    background: transparent;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #5264AE;
-}
+/*input[type=text] {*/
+    /*font-size: 18px;*/
+    /*padding: 10px 10px 10px 5px;*/
+    /*display: block;*/
+    /*background: transparent;*/
+    /*width: 100%;*/
+    /*border: none;*/
+    /*border-bottom: 1px solid #5264AE;*/
+/*}*/
 
 input:focus {
     outline: none;
@@ -246,3 +246,5 @@ content h3 {
     top: 10px;
     right: 10px;
 }
+
+

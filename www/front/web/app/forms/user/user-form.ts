@@ -1,4 +1,4 @@
-export class User {
+export class UserForm {
     id: number;
     name: string;
     company: string;

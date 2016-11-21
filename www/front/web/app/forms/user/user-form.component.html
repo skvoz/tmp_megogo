@@ -1,7 +1,18 @@
 <div class="container">
     <div [hidden]="submitted">
-        <h1>Register</h1>
-        <form [formGroup]="userForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
+        <h1>Register {{title}}</h1>
+        <form [formGroup]="userFormGroup"  *ngIf="active"  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="id">id</label>
+
+                <input type="text" id="id" class="form-control"
+                       formControlName="id" required >
+
+                <div *ngIf="formErrors.id" class="alert alert-danger">
+                    {{ formErrors.name }}
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="name">name</label>
 
@@ -47,17 +58,8 @@
             </div>
 
             <button type="submit" class="btn btn-default"
-                    [disabled]="!registerForm.valid">Submit</button>
+                    [disabled]="!userFormGroup.valid">Submit</button>
 
         </form>
     </div>
-
-    <!--<register-submitted [register]="register" [(submitted)]="submitted"></register-submitted>-->
 </div>
-
-
-<!--
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->

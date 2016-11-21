@@ -4,11 +4,6 @@ import {FormsModule}    from '@angular/forms';
 import {HttpModule}    from '@angular/http';
 
 import {AppComponent}        from './app.component';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HeroesComponent}     from './heroes.component';
-import {HeroService}         from './hero.service';
-import {DashboardComponent}         from './dashboard.component';
-import {HeroSearchComponent}         from './hero-search.component';
 
 import {AppRoutingModule}     from './app-routing.module';
 
@@ -20,7 +15,6 @@ import './rxjs-extensions';
 import {UsersComponent} from "./user/users.component";
 import {UserUpdateComponent} from "./user/user-update.component";
 import {UserAddComponent} from "./user/user-add.component";
-import {TableComponent} from "./table/table.component";
 import {Angular2DataTableModule} from "angular2-data-table";
 import {UserService} from "./user/user.service";
 import {AuthComponent} from "./user/auth.component";
@@ -32,7 +26,7 @@ import {UserLoginComponent} from "./user/user-login.component";
 import {UserRegisterComponent} from "./user/user-register.component";
 import {LoginFormReactiveModule} from "./forms/login/login-form-reactive.module";
 import {RegisterFormReactiveModule} from "./forms/register/register-form-reactive.module";
-import {UserFormComponent} from "./forms/user/user-form.component";
+import {UserFormModule} from "./forms/user/user-form.module";
 
 
 @NgModule({
@@ -45,26 +39,20 @@ import {UserFormComponent} from "./forms/user/user-form.component";
         Angular2DataTableModule,
         LoginFormReactiveModule,
         RegisterFormReactiveModule,
+        UserFormModule,
 
     ],
     declarations: [
         AppComponent,
-        HeroDetailComponent,
-        HeroesComponent,
-        DashboardComponent,
-        HeroSearchComponent,
         UsersComponent,
         UserUpdateComponent,
         UserAddComponent,
-        TableComponent,
         AuthComponent,
         UserLoginComponent,
         UserRegisterComponent,
-        UserFormComponent,
 
     ],
     providers: [
-        HeroService,
         UserService
     ],
     bootstrap: [AppComponent]

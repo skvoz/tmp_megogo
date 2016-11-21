@@ -1,33 +1,20 @@
 import {Component, OnInit}      from '@angular/core';
-import {Router, Params, Route} from '@angular/router';
-import {Location}               from '@angular/common';
+import {UserFormComponent} from "../forms/user/user-form.component";
 
 import {User}        from '../user';
-import {UserService} from './user.service';
 
 @Component({
     moduleId: module.id,
     selector: 'user-add-app',
-    templateUrl: 'user.component.html',
+    template: '<user-form [userId]="id"></user-form>',
+    directives: [UserFormComponent],
 })
-export class UserAddComponent {
-    // user: User;
-    //
-    // constructor(private userService: UserService,
-    //             private router: Router,
-    //             private location: Location) {
-    // }
-    //
-    // ngOnInit(): void {
-    //     this.user = new User();
-    // }
-    //
-    // save(): void {
-    //     this.userService.create(this.user)
-    //         .then(() => this.router.navigate(['/users']))
-    // }
-    //
-    // goBack(): void {
-    //     this.location.back();
-    // }
+export class UserAddComponent extends OnInit {
+    id: number;
+
+    userModel: User;
+
+    ngOnInit(): void {
+        this.userModel = new User('', '', '', '');
+    }
 }

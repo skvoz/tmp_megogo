@@ -1,42 +1,25 @@
-import { Component, OnInit }      from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location }               from '@angular/common';
+import {Component, OnInit}      from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 
-import { User }        from '../user';
-import { UserService } from './user.service';
+import {UserService} from './user.service';
+import {UserFormComponent} from "../forms/user/user-form.component";
 
 @Component({
     moduleId: module.id,
-    selector: 'user-update-app',
-    templateUrl: 'user.component.html',
-    stylesUrl: ['user.component.css'],
+    template: "<user-form [userId]='id'></user-form>",
+    directives: [UserFormComponent],
 })
 export class UserUpdateComponent implements OnInit {
-    user: User;
 
-    constructor(
-        private userService: UserService,
-        private route: ActivatedRoute,
-        private location: Location
-    ) {}
+    id: number;
+
+    constructor(private userService: UserService,
+                private route: ActivatedRoute) {
+    }
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
-
-                let id = +params['id'];
-
-                this.userService.getUser(id)
-                    .then(user => this.user = user);
-
+            this.id = +params['id'];
         });
-    }
-
-    save(): void {
-        this.userService.update(this.user)
-            .then(() => this.goBack());
-    }
-
-    goBack(): void {
-        this.location.back();
     }
 }

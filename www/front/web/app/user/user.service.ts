@@ -1,7 +1,8 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+import {Router} from '@angular/router';
+// import 'rxjs/add/operator/toPromise';
+import { Observable }     from 'rxjs/Observable';
 
 import { User } from '../user';
 // import {Login} from "../forms/login/login";
@@ -13,54 +14,41 @@ export class UserService {
 
     private usersUrl = 'app/users';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http,
+                private router: Router
+    ) { }
 
-    getUsers(): Promise<User[]> {
+    getUsers(): Observable<User[]> {
         return this.http.get(this.usersUrl)
-            .toPromise()
-            .then(response => response.json().data as User[])
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
-    getUser(id?: number): Promise<User> {
-        return  this.getUsers()
-            .then(users => {
-                let obj = users.find(user => user.id === id);
-                if (typeof obj == "undefined") {
-                    obj = new User;
-                }
-
-                return obj;
-            });
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
-
-    update(user: User): Promise<User> {
+    update(user: User): Observable<User> {
         const url = `${this.usersUrl}/${user.id}`;
-        return this.http
-            .put(url, JSON.stringify(user), {headers: this.headers})
-            .toPromise()
-            .then(() => user)
-            .catch(this.handleError);
+
+        // return this.http.put(url, JSON.stringify(user), {headers: this.headers})
+        //     .map(res => res.json())
+        //     .catch(this.handleError)
+        //     .subscribe(
+        //         () => this.router.navigate(['Users']),
+        //         (response: Response) => {
+        //             this.handleError(response);
+        //         }
+        //     );
     }
 
-    create(user: User): Promise<User> {
+    create(user: User): Observable<User> {
         return this.http
             .post(this.usersUrl, JSON.stringify(user), {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
-    delete(id: number): Promise<void> {
+    delete(id: number): Observable<void> {
         const url = `${this.usersUrl}/${id}`;
         return this.http.delete(url, {headers: this.headers})
-            .toPromise()
-            .then(() => null)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
@@ -72,4 +60,24 @@ export class UserService {
     //     //     .then(()=> model)
     //     //     .catch(this.handleError());
     // }
+
+    private extractData(res: Response) {
+        let body = res.json();
+
+        return body.data || { };
+    }
+
+    private handleError (error: Response | any) {
+        // In a real world app, we might use a remote logging infrastructure
+        let errMsg: string;
+        if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable.throw(errMsg);
+    }
 }

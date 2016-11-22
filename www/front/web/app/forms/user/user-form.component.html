@@ -1,65 +1,51 @@
 <div class="container">
-    <div [hidden]="submitted">
-        <h1>Register {{title}}</h1>
-        <form [formGroup]="userFormGroup"  *ngIf="active"  (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="id">id</label>
+    <h1>Register {{title}}</h1>
+    <form [formGroup]="userFormGroup" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">name</label>
 
-                <input type="text" id="id" class="form-control"
-                       formControlName="id" required >
+            <input type="text" id="name" class="form-control"
+                   formControlName="name" required >
 
-                <div *ngIf="formErrors.id" class="alert alert-danger">
-                    {{ formErrors.name }}
-                </div>
+            <div *ngIf="formErrors.name" class="alert alert-danger">
+                {{ formErrors.name }}
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="name">name</label>
+        <div class="form-group">
+            <label for="company">company</label>
 
-                <input type="text" id="name" class="form-control"
-                       formControlName="name" required >
+            <input type="text" id="company" class="form-control"
+                   formControlName="company" required >
 
-                <div *ngIf="formErrors.name" class="alert alert-danger">
-                    {{ formErrors.name }}
-                </div>
+            <div *ngIf="formErrors.company" class="alert alert-danger">
+                {{ formErrors.company }}
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="company">company</label>
+        <div class="form-group">
+            <label for="gender">gender</label>
 
-                <input type="text" id="company" class="form-control"
-                       formControlName="company" required >
+            <input type="text" id="gender" class="form-control"
+                   formControlName="gender" required >
 
-                <div *ngIf="formErrors.company" class="alert alert-danger">
-                    {{ formErrors.company }}
-                </div>
+            <div *ngIf="formErrors.gender" class="alert alert-danger">
+                {{ formErrors.gender }}
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="gender">gender</label>
+        <div class="form-group">
+            <label for="age">age</label>
 
-                <input type="text" id="gender" class="form-control"
-                       formControlName="gender" required >
+            <input type="text" id="age" class="form-control"
+                   formControlName="age" required >
 
-                <div *ngIf="formErrors.gender" class="alert alert-danger">
-                    {{ formErrors.gender }}
-                </div>
+            <div *ngIf="formErrors.age" class="alert alert-danger">
+                {{ formErrors.age }}
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="age">age</label>
-
-                <input type="text" id="age" class="form-control"
-                       formControlName="age" required >
-
-                <div *ngIf="formErrors.age" class="alert alert-danger">
-                    {{ formErrors.age }}
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-default"
-                    [disabled]="!userFormGroup.valid">Submit</button>
-
-        </form>
-    </div>
+        <button type="submit" class="btn btn-default"
+                [disabled]="!userFormGroup.valid">Submit</button>
+    </form>
 </div>

@@ -9,13 +9,12 @@ import {UserService} from "../user/user.service";
           <h3><span>Users</span></h3>
           <datatable
             class="material fullscreen"
-            [rows]="rows"
+            [rows]="users"
             [columnMode]="'force'"
             [columns]="columns"
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="50"
-            [selected]="selected"
             [selectionType]="'cell'"
             [limit]="10">
             
@@ -69,20 +68,13 @@ import {UserService} from "../user/user.service";
     `
 })
 
-export class UsersComponent extends OnInit{
+export class UsersComponent extends OnInit {
+
     users: User[];
-    rows: any[] = [];
-    selected: any[] = [];
-    columns: any[] = [
-        {name: 'name'},
-        {name: 'Company'},
-        {name: 'Gender'},
-        {name: 'Age'},
-        {name: 'actions'}
-    ];
+
+    columns: any[];
 
     private errorMessage;
-
 
     constructor(private router: Router,
                 private userService: UserService) {
@@ -90,27 +82,29 @@ export class UsersComponent extends OnInit{
     }
 
     ngOnInit(): void {
+        this.users = [];
+        this.columns = [
+            {name: 'name'},
+            {name: 'Company'},
+            {name: 'Gender'},
+            {name: 'Age'},
+            {name: 'actions'}
+        ];
         this.getUsers();
     }
 
     getUsers(): void {
         this.userService.getUsers()
             .subscribe(
-                user => this.rows = user,
+                users => this.users = users,
                 error => this.errorMessage = <any>error);
-    }
-
-
-    gotoDetail(id: number): void {
-        this.router.navigate(['/user', id]);
     }
 
     delete(id: number): void {
         this.userService
             .delete(id)
-            .subscribe(() => {
-                    this.rows = this.rows.filter(u => u.id !== id);
-                },
+            .subscribe(
+                () => this.users = this.users.filter(u => u.id !== id),
                 error => this.errorMessage = <any>error
             );
     }

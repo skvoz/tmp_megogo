@@ -1,10 +1,10 @@
-import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import {Injectable}    from '@angular/core';
+import {Headers, Http} from '@angular/http';
 import {Router} from '@angular/router';
 // import 'rxjs/add/operator/toPromise';
-import { Observable }     from 'rxjs/Observable';
+import {Observable}     from 'rxjs/Observable';
 
-import { User } from '../user';
+import {User} from '../user';
 // import {Login} from "../forms/login/login";
 
 @Injectable()
@@ -14,28 +14,22 @@ export class UserService {
 
     private usersUrl = 'app/users';
 
-    constructor(private http: Http,
-                private router: Router
-    ) { }
+    constructor(private http: Http) {
+    }
 
     getUsers(): Observable<User[]> {
-        return this.http.get(this.usersUrl)
+        return this.http
+            .get(this.usersUrl)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     update(user: User): Observable<User> {
-        const url = `${this.usersUrl}/${user.id}`;
+        let url = `${this.usersUrl}/${user.id}`;
 
-        // return this.http.put(url, JSON.stringify(user), {headers: this.headers})
-        //     .map(res => res.json())
-        //     .catch(this.handleError)
-        //     .subscribe(
-        //         () => this.router.navigate(['Users']),
-        //         (response: Response) => {
-        //             this.handleError(response);
-        //         }
-        //     );
+        return this.http
+            .put(url, JSON.stringify(user), {headers: this.headers})
+            .catch(this.handleError);
     }
 
     create(user: User): Observable<User> {
@@ -47,6 +41,7 @@ export class UserService {
 
     delete(id: number): Observable<void> {
         const url = `${this.usersUrl}/${id}`;
+
         return this.http.delete(url, {headers: this.headers})
             .map(this.extractData)
             .catch(this.handleError);
@@ -64,10 +59,10 @@ export class UserService {
     private extractData(res: Response) {
         let body = res.json();
 
-        return body.data || { };
+        return body.data || {};
     }
 
-    private handleError (error: Response | any) {
+    private handleError(error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {
